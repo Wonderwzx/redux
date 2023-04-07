@@ -1,25 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import reducer from "./redux/reducer";
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+import AddPerson from "./components/AddPerson";
+import Persons from "./components/Persons";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const store = createStore(reducer);
+
+const App = () => {
+    return (
+        <Provider store={store}>
+            <h2>Adding person and deleting person</h2>
+            <div>
+                <AddPerson />
+                <Persons />
+            </div>
+        </Provider>
+    );
+};
 
 export default App;
+
+
+// const store = createStore(reducer);
+//
+// function App() {
+//   return (
+//     <div className="App">
+//       <h2>Adding person and deleting person</h2>
+//       <Persons />
+//     </div>
+//   );
+// }
+//
+
+
